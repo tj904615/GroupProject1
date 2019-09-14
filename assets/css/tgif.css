@@ -77,7 +77,7 @@ h1,h2,h3,h4,h5,h6{
     background: #333;
     color: #666;
 }
-.row.deliver-options{
+.row.deliver-options, .row.recipe-options{
     width: 80%;
     max-width: 960px;
     margin: 0px auto;
@@ -87,10 +87,10 @@ h1,h2,h3,h4,h5,h6{
     box-shadow: 0px 0px 30px #000;
     position: absolute;
     z-index: 3;
-    left: 25%;
+    left: 21.5%;
     top: 20vh;
     }
-    .row.deliver-options h2{
+    .row.deliver-options h2, .row.recipe-options h2{
         margin-bottom: 30px;
     }
 .btn, button.deliver-btn {
@@ -113,8 +113,8 @@ h1,h2,h3,h4,h5,h6{
         background: #000;
         color: #FFF;
     }
-.deliverOptionsWrap{
-    height: 100vh;
+.deliverOptionsWrap,.recipeOptionsWrap{
+    min-height: 100vh;
     width: 100%;
     background: rgba(0,0,0,0.7);
     position: absolute;
@@ -152,41 +152,90 @@ h1,h2,h3,h4,h5,h6{
     top: 0px;
     left: 395px;
     display: none;
-  }
-  #locationInput{
-      padding-right: 20px;
-      margin-bottom: 0px;
-      position: relative;
-      left: -100px;
-  }
-  #zipSearch{
-      position: relative;
-      left: -100px;
-  }
-  #deliverIt label, #deliverIt input{
+}
+#locationInput{
+    padding-right: 20px;
+    margin-bottom: 0px;
+    position: relative;
+    left: -100px;
+}
+#zipSearch{
+    position: relative;
+    left: -100px;
+}
+#deliverIt label, #deliverIt input{
     float:left;
-  }
+}
 
-  #delCatInput{
-    border-radius: 5px;
-    border: 1px solid #CCC;
-    padding: 17px 5px 20px 5px;
-    width: 66%;
-    margin: 20px 0px;
+#delCatInput, #recCatInput{
+border-radius: 5px;
+border: 1px solid #CCC;
+padding: 17px 5px 20px 5px;
+width: 66%;
+margin: 20px 0px;
+font-family: 'Oswald','Bebas Neue',condensed,sans-serif;
+font-weight: 300;
+text-transform: uppercase;
+}
+.delCatInputBtn, .recCatInputBtn{
+border: none;
+width: 32%;
+padding: 20px 20px;
+border-radius: 5px;
+background: #A43A6E;
+}
+.delCatInputBtn i, .recCatInputBtn i{
+color: #FFF;
+}
+.closeModal, .closeModal2, .closeModal3, .closeModal4{
+    font-family: 'Roboto','Helvetica Neue',helvetica,arial,sans-serif;
+    background: #eaeaea;
+    padding: 5px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 20px;
+    color: #999;
+    max-height: 40px;
+}
+.closeModal:hover, .closeModal2:hover, .closeModal3:hover, .closeModal4:hover{
+    color:#000;
+}
+.deliver-api.row, .recipe-api.row{
+    background: #FFF;
+    max-width: 1200px;
+    width: 80%;
+    border-radius: 40px;
+    margin: 0px auto;
+    position: relative;
+    left: 0%;
+    top: 10vh;
+    opacity: 0.0;
+    padding: 40px;
+}
+.deliver-api.row .api-object, .recipe-api.row .api-object{
+    border: 1px solid #666;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 10px;
+    box-sizing: border-box;
+    margin: 3px;
+    flex-basis: calc(33% - 6px);
+}
+.deliver-api.row .api-object h3, .recipe-api.row .api-object h3{
+    text-align: left;
     font-family: 'Oswald','Bebas Neue',condensed,sans-serif;
-    font-weight: 300;
+    font-weight: 700;
     text-transform: uppercase;
-  }
-  .delCatInputBtn{
-    border: none;
-    width: 32%;
-    padding: 20px 20px;
-    border-radius: 5px;
-    background: #A43A6E;
-  }
-  .delCatInputBtn i{
-    color: #FFF;
-  }
+}
+.deliver-api.row .api-object ul,.recipe-api.row .api-object ul{
+    font-weight: 700;
+    margin-left: -20px;
+}
+.deliver-api.row .api-object ul li, .recipe-api.row .api-object ul li{
+    font-weight: 300;
+    margin-left: 20px;
+}
 
 
 
