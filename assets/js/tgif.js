@@ -1,7 +1,8 @@
+/*
 
+    -- Project 1 (API) 
 
-
-
+*/
 
 $("#enterZip").submit(function(e) {
     e.preventDefault();
@@ -21,10 +22,11 @@ $(".zipVarStore").on("click",function(){
     varStore(userZip);
 });
 
+$(".closeModal").on("click",function(){
+    $(".optionsModalDel1").css("display","none");
+    $(".optionsModalDel1").animate({opacity:0.0});
+});
+
 function varStore(zipCode){
     console.log(zipCode);
 }
-
-
-
-// LOGGING VARIABLES TO VIEW VALUES
