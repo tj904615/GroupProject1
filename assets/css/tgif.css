@@ -11,7 +11,16 @@ h1, h2{
     font-family: 'Montserrat','Helvetica Neue','helvetica',arial,sans-serif;
     font-weight: 900;
 }
-h1,h2,h3,h4,h5,h6{
+img {
+    max-width: 100%;
+    height: auto;
+}
+h3{
+    font-family: 'Oswald','Bebas Neue',condensed,sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+h1,h2,h4,h5,h6{
     text-align: center;
     width: 100%;
 }
@@ -61,23 +70,26 @@ h1,h2,h3,h4,h5,h6{
     width: 90%;
     margin: 0px auto;
     background: rgba(0,0,0,0.3);
-    min-height: 300px;
+    min-height: 250px;
+    border-radius: 20px 20px 80px 80px;
 }
 .row.selection-container h2{
     color: #FFF;
     text-align: center;
     padding: 20px;
     font-size: 1.5rem;
-    background: #000;
+    background: #85B13C;
     width: 50%;
     height: 70px;
     font-style: italic;
+    text-shadow: 2px 2px 0px #507614;
 }
 .row.selection-container h2.inactive{
-    background: #333;
-    color: #666;
+    background: #689520;
+    color: #3e5e0b;
+    text-shadow: none;
 }
-.row.deliver-options, .row.recipe-options{
+.row.deliver-options, .row.recipe-options, .row.movie-options, .row.music-options, .row.book-options{
     width: 80%;
     max-width: 960px;
     margin: 0px auto;
@@ -90,7 +102,7 @@ h1,h2,h3,h4,h5,h6{
     left: 21.5%;
     top: 20vh;
     }
-    .row.deliver-options h2, .row.recipe-options h2{
+    .row.deliver-options h2, .row.recipe-options h2, .row.movie-options h2, .row.music-options h2, .row.book-options h2{
         margin-bottom: 30px;
     }
 .btn, button.deliver-btn {
@@ -113,7 +125,7 @@ h1,h2,h3,h4,h5,h6{
         background: #000;
         color: #FFF;
     }
-.deliverOptionsWrap,.recipeOptionsWrap{
+.deliverOptionsWrap,.recipeOptionsWrap,.movieOptionsWrap,.musicOptionsWrap,.bookOptionsWrap{
     min-height: 100vh;
     width: 100%;
     background: rgba(0,0,0,0.7);
@@ -167,7 +179,7 @@ h1,h2,h3,h4,h5,h6{
     float:left;
 }
 
-#delCatInput, #recCatInput{
+#delCatInput, #recCatInput, #movCatInput, #musCatInput, #booCatInput{
 border-radius: 5px;
 border: 1px solid #CCC;
 padding: 17px 5px 20px 5px;
@@ -177,17 +189,17 @@ font-family: 'Oswald','Bebas Neue',condensed,sans-serif;
 font-weight: 300;
 text-transform: uppercase;
 }
-.delCatInputBtn, .recCatInputBtn{
+.delCatInputBtn, .recCatInputBtn, .movCatInputBtn, .musCatInputBtn, .booCatInputBtn{
 border: none;
 width: 32%;
 padding: 20px 20px;
 border-radius: 5px;
 background: #A43A6E;
 }
-.delCatInputBtn i, .recCatInputBtn i{
+.delCatInputBtn i, .recCatInputBtn i, .movCatInputBtn i, .musCatInputBtn i, .booCatInputBtn i{
 color: #FFF;
 }
-.closeModal, .closeModal2, .closeModal3, .closeModal4{
+.closeModal, .closeModal2, .closeModal3, .closeModal4, .closeModal5, .closeModal6, .closeModal7, .closeModal8, .closeModal9{
     font-family: 'Roboto','Helvetica Neue',helvetica,arial,sans-serif;
     background: #eaeaea;
     padding: 5px 20px;
@@ -198,10 +210,10 @@ color: #FFF;
     color: #999;
     max-height: 40px;
 }
-.closeModal:hover, .closeModal2:hover, .closeModal3:hover, .closeModal4:hover{
+.closeModal:hover, .closeModal2:hover, .closeModal3:hover, .closeModal4:hover, .closeModal5:hover, .closeModal6:hover, .closeModal7:hover, .closeModal8:hover, .closeModal9:hover{
     color:#000;
 }
-.deliver-api.row, .recipe-api.row{
+.deliver-api.row, .recipe-api.row, .movie-api.row, .music-api.row, .book-api.row{
     background: #FFF;
     max-width: 1200px;
     width: 80%;
@@ -237,7 +249,10 @@ color: #FFF;
     margin-left: 20px;
 }
 
-
+/* -------------- ACTIVITY PATH --------------------- */
+.todo-selection{
+    display: none;
+}
 
 /* ===================================
 -------------------- MEDIA QUERIES ---

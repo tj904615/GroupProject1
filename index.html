@@ -22,9 +22,9 @@
             </div>
         </div>
         <div class="row selection-container">
-            <h2 class="montBold">1. WHAT'S FOR DINNER?</h2>
-            <h2 class="montBold inactive">2. WHAT DO YOU WANT TO DO?</h2>
-            <div class="col">
+            <h2 class="montBold dinner-select">1. WHAT'S FOR DINNER?</h2>
+            <h2 class="montBold todo-select inactive">2. WHAT DO YOU WANT TO DO?</h2>
+            <div class="col dinner-selection">
                 <button id="deliverIt" class="deliver-btn circle-btn hideOnClick"><span>Deliver it.</span>  
                 </button>
                 <form id="enterZip">
@@ -33,10 +33,22 @@
                     <button class="zipVarStore btn">Search</button> 
                 </form>                       
             </div>
-            <div class="col">
+            <div class="col dinner-selection">
                 <button id="getRecipe" class="btn circle-btn">Get Me a Recipe.</button>            
             </div>
+            <!--- TO DO PATH BUTTONS -->
+            <div class="col todo-selection">
+                <button id="watchMovie" class="btn circle-btn">Watch a Movie</button>
+            </div>
+            <div class="col todo-selection">
+                <button id="listenMusic" class="btn circle-btn">Listen to Music</button>
+            </div>
+            <div class="col todo-selection">
+                <button id="readBook" class="btn circle-btn">Read a Book</button>
+            </div>
         </div>
+
+<!-- DELIVERY OPTIONS PATH ----------------------------------- -->        
         <div class="deliverOptionsWrap optionsModalDel1">
             <div id="deliverOptionsAPI" class="deliver-api row">
                 <div class="col-md-4 api-object">
@@ -120,6 +132,8 @@
                 <h4 class="closeModal">x - start over</h4>
             </div>
         </div>
+
+<!-- RECIPE PATH --------------------------------------------- -->        
         <div id="" class="recipeOptionsWrap optionsModalRec2">
             <div id="recipeOptionsAPI" class="recipe-api row">
                 <div class="col-md-4 api-object">
@@ -249,6 +263,201 @@
                     </button> 
                 </div>            
                 <h4 class="closeModal3">x - start over</h4>
+            </div>
+        </div>
+
+<!-- WATCH A MOVIE PATH ------------------------------------ -->        
+        <div id="" class="movieOptionsWrap optionsModalMov3">
+            <div id="movieOptionsAPI" class="movie-api row">
+                <div class="col-md-4 api-object">
+                    <h3>Movie Title</h3>
+                    <iframe src="https://www.youtube.com/embed/peSLY-EfYKo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Rating</p>
+                    <p>Plot Details<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Movie Title</h3>
+                    <iframe src="https://www.youtube.com/embed/peSLY-EfYKo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Rating</p>
+                    <p>Plot Details<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Movie Title</h3>
+                    <iframe src="https://www.youtube.com/embed/peSLY-EfYKo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Rating</p>
+                    <p>Plot Details<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <h4 class="closeModal5">x - start over</h4>
+            </div>
+            <div class="row movie-options">
+                <h2>What style movie are you up for?</h2>   
+                <div class="col-md-4">
+                    <button id="movieSup" class="movieCat btn circle-btn" data-value="superhero">Superhero</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="movieAct" class="movieCat btn circle-btn" data-value="action">Action</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="movieCom" class="movieCat btn circle-btn" data-value="comedy">Comedy</button>            
+                </div>
+                <div class="col-md-4">
+                    <button id="movieRom" class="movieCat btn circle-btn" data-value="romantic+comedy">Romantic Comedy</button>            
+                </div>
+                <div class="col-md-4">
+                    <button id="movieHor" class="movieCat btn circle-btn" data-value="horror">Horror</button>            
+                </div>
+                <div class="col-md-4">
+                    <input text placeholder="Something Specific" class="movieCat" id="movCatInput">
+                    <button class="movCatInputBtn"><i class="fa fa-search" aria-hidden="true"></i>
+                    </button> 
+                </div>            
+                <h4 class="closeModal4">x - start over</h4>
+            </div>
+        </div>
+
+<!-- LISTEN TO MUSIC PATH ----------------------------------------- -->
+        <div id="" class="musicOptionsWrap musicModalRec4">
+            <div id="musicOptionsAPI" class="music-api row">
+                <div class="col-md-4 api-object">
+                    <h3>PLAYLIST TITLE</h3>
+                    <iframe src="https://open.spotify.com/embed/track/799f6Ih1Pu4AUApMyXhxUc" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>PLAYLIST TITLE</h3>
+                    <iframe src="https://open.spotify.com/embed/track/799f6Ih1Pu4AUApMyXhxUc" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>PLAYLIST TITLE</h3>
+                    <iframe src="https://open.spotify.com/embed/track/799f6Ih1Pu4AUApMyXhxUc" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>PLAYLIST TITLE</h3>
+                    <iframe src="https://open.spotify.com/embed/track/799f6Ih1Pu4AUApMyXhxUc" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>PLAYLIST TITLE</h3>
+                    <iframe src="https://open.spotify.com/embed/track/799f6Ih1Pu4AUApMyXhxUc" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>PLAYLIST TITLE</h3>
+                    <iframe src="https://open.spotify.com/embed/track/799f6Ih1Pu4AUApMyXhxUc" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                
+                <h4 class="closeModal6">x - start over</h4>
+            </div>
+            <div class="row music-options">
+                <h2>What sort of food would you like to cook?</h2>   
+                <div class="col-md-4">
+                    <button id="musicHip" class="musicCat btn circle-btn" data-value="hip_hop">Hip Hop</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="musicRoc" class="musicCat btn circle-btn" data-value="rock">Rock</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="musicRap" class="musicCat btn circle-btn" data-value="rap">Rap</button>            
+                </div>
+                <div class="col-md-4">
+                    <button id="musicCla" class="musicCat btn circle-btn" data-value="classic">Classic</button>            
+                </div>
+                <div class="col-md-4">
+                    <button id="musicAme" class="musicCat btn circle-btn" data-value="americana">Americana</button>            
+                </div>
+                <div class="col-md-4">
+                    <input text placeholder="Something Specific" class="musicCat" id="musCatInput">
+                    <button class="musCatInputBtn"><i class="fa fa-search" aria-hidden="true"></i>
+                    </button> 
+                </div>            
+                <h4 class="closeModal7">x - start over</h4>
+            </div>
+        </div>
+
+<!-- READ A BOOK PATH ----------------------------------- -->
+        <div id="" class="bookOptionsWrap optionsModalBoo5">
+            <div id="bookOptionsAPI" class="book-api row">
+                <div class="col-md-4 api-object">
+                    <h3>BOOK NAME</h3>
+                    <img class="img-responsive" src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/attachment_83090027.jpg?auto=format&q=60&fit=max&w=930" alt="book title">
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>BOOK NAME</h3>
+                    <img class="img-responsive" src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/attachment_83090027.jpg?auto=format&q=60&fit=max&w=930" alt="book title">
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>BOOK NAME</h3>
+                    <img class="img-responsive" src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/attachment_83090027.jpg?auto=format&q=60&fit=max&w=930" alt="book title">
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+
+                
+                <h4 class="closeModal9">x - start over</h4>
+            </div>
+            <div class="row book-options">
+                <h2>What sort of food would you like to cook?</h2>   
+                <div class="col-md-4">
+                    <button id="bookMys" class="bookCat btn circle-btn" data-value="mystery">Mystery</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="bookThr" class="bookCat btn circle-btn" data-value="thriller">Thriller</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="bookRom" class="bookCat btn circle-btn" data-value="romance">Romance</button>            
+                </div>
+                <div class="col-md-4">
+                    <button id="bookPoe" class="bookCat btn circle-btn" data-value="poetry">Poetry</button>            
+                </div>
+                <div class="col-md-4">
+                    <button id="bookCom" class="bookCat btn circle-btn" data-value="comedy">Comedy</button>            
+                </div>
+                <div class="col-md-4">
+                    <input text placeholder="Something Specific" class="bookCat" id="booCatInput">
+                    <button class="booCatInputBtn"><i class="fa fa-search" aria-hidden="true"></i>
+                    </button> 
+                </div>            
+                <h4 class="closeModal8">x - start over</h4>
             </div>
         </div>
     </section>
