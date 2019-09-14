@@ -1,0 +1,173 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+    font-size: 18px;
+    font-family: 'Roboto','Helvetica Neue',helvetica,arial,sans-serif;
+    font-weight: 300;
+    background: #000;
+}
+h1, h2{
+    font-family: 'Montserrat','Helvetica Neue','helvetica',arial,sans-serif;
+    font-weight: 900;
+}
+h1,h2,h3,h4,h5,h6{
+    text-align: center;
+    width: 100%;
+}
+
+#board1{
+    height: 100vh;
+    width: 100%;
+    background: url(../img/friendsFood.jpg) no-repeat center center #000;
+    background-size: cover;
+    margin: 0px;
+    padding: 20vh 0px 0px;
+}
+.row.logo-container{
+    text-align: center;
+    background: rgba(145,1,77,0.7);
+    padding: 0px 0px 20px;
+    color: #FFF;
+    margin: 0px 0px 40px;
+}
+.row.logo-container h1, .row.logo-container h2{
+    text-align: center;
+    color: #FFF;
+}
+.montBold{
+    font-family: 'Montserrat','Helvetica Neue',helvetica,arial,sans-serif;
+    font-weight: 900;
+}
+.oswald{
+    font-family:'Oswald','Bebas Neue','Impact',condensed,sans-serif;
+}
+.row.logo-container h1{
+    font-size: 9rem;
+    line-height: 9rem;
+    margin: 0px;
+    padding: 0px;
+}
+.row.logo-container h2{
+    font-size: 2.1rem;
+    line-height: 2.1rem;
+    font-weight: 100;
+    padding: 0px;
+}
+.row.logo-container .relax{
+    font-weight: 700;
+}
+.row.selection-container{
+    width: 90%;
+    margin: 0px auto;
+    background: rgba(0,0,0,0.3);
+    min-height: 300px;
+}
+.row.selection-container h2{
+    color: #FFF;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    background: #000;
+    width: 50%;
+    height: 70px;
+    font-style: italic;
+}
+.row.selection-container h2.inactive{
+    background: #333;
+    color: #666;
+}
+.row.deliver-options{
+    width: 80%;
+    max-width: 960px;
+    margin: 0px auto;
+    background: #FFF;
+    padding: 40px;
+    border-radius: 40px;
+    box-shadow: 0px 0px 30px #000;
+    position: absolute;
+    z-index: 3;
+    left: 25%;
+    top: 20vh;
+    }
+    .row.deliver-options h2{
+        margin-bottom: 30px;
+    }
+.btn, button.deliver-btn {
+    margin: 0px auto 20px;
+    text-align: center;
+    border: 5px solid #000;
+    width: 90%;
+    padding: 30px;
+    display:block;
+    border-radius: 200px;
+    font-family: 'Oswald','Bebas Neue','Impact',condensed,sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.8);
+    color: #A43A6E;
+    transform: scale(1.0);
+    transition: all .25s ease .125s;
+    }
+    .btn:hover{
+        background: #000;
+        color: #FFF;
+    }
+.deliverOptionsWrap{
+    height: 100vh;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0px;
+    opacity: 0.0;
+    display: none;
+}
+#enterZip{
+    opacity: 0.0;
+    display: none;
+    transition: all .5s;
+}
+#zipSearch{
+    border: 1px solid #999;
+    border-radius: 200px 0px 0px 200px;
+    width: 100px;
+    padding: 0px 10px;
+}
+.zipVarStore.btn{
+    padding: 0px;
+    width: 175px;
+    background: #069;
+    border: none;
+    color:#FFF;
+    float:left;
+    border-radius: 0px 200px 200px 0px;
+    margin-bottom: 0px;
+    position: relative;
+    top: -92px;
+    left: 395px;
+    display: none;
+  }
+  #deliverIt label{
+      padding-right: 20px;
+      margin-bottom: 0px;
+  }
+  #deliverIt label, #deliverIt input{
+    float:left;
+  }
+
+
+
+/* ===================================
+-------------------- MEDIA QUERIES ---
+==================================== */
+@media screen and (max-width: 780px){
+    .row.logo-container h1{
+        font-size: 6rem;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .row.logo-container h1{
+        font-size: 5rem;
+    }
+}
