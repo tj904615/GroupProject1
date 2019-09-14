@@ -6,9 +6,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:900|Oswald:300,400|Roboto:400,700&display=swap" rel="stylesheet"> 
     <!-- BOOTSTRAP CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- BOOTSTRAP FONTAWESOME CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!-- LOCAL STYLES (called after Bootstrap to give highest priority - SLF) -->
     <link rel="stylesheet" href="assets/css/tgif.css" />
-    <!-- JQUERY CDN -->
+    <!-- JQUERY CDN and LOCAL JS LOCATED BEFORE CLOSING BODY TAG -->
 </head>
 <body>
     <section id="board1" class="home board1 container-fluid">
@@ -23,44 +25,236 @@
             <h2 class="montBold">1. WHAT'S FOR DINNER?</h2>
             <h2 class="montBold inactive">2. WHAT DO YOU WANT TO DO?</h2>
             <div class="col">
-                <button id="deliverIt" class="deliver-btn circle-btn"><span class="hideOnClick">Deliver it.</span>
-                    <form id="enterZip">
-                            <label id="locationInput" class="location" value="Zip Code" for="zipSearch">Enter Your Zip Code</label>
-                            <input text placeholder="55555" id="zipSearch">
-                            <button class="zipVarStore btn">Search</button> 
-                    </form>  
+                <button id="deliverIt" class="deliver-btn circle-btn hideOnClick"><span>Deliver it.</span>  
                 </button>
-                       
+                <form id="enterZip">
+                    <label id="locationInput" class="location" value="Zip Code" for="zipSearch">Enter Your Zip Code</label>
+                    <input text placeholder="55555" id="zipSearch">
+                    <button class="zipVarStore btn">Search</button> 
+                </form>                       
             </div>
             <div class="col">
                 <button id="getRecipe" class="btn circle-btn">Get Me a Recipe.</button>            
             </div>
         </div>
-        <div class="deliverOptionsWrap">
+        <div class="deliverOptionsWrap optionsModalDel1">
+            <div id="deliverOptionsAPI" class="deliver-api row">
+                <div class="col-md-4 api-object">
+                    <h3>Restaurant Name</h3>
+                    <ul>Details
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Restaurant Name</h3>
+                    <ul>Details
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Restaurant Name</h3>
+                    <ul>Details
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Restaurant Name</h3>
+                    <ul>Details
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Restaurant Name</h3>
+                    <ul>Details
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Restaurant Name</h3>
+                    <ul>Details
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                </div>
+                <h4 class="closeModal2">x - start over</h4>
+            </div>
             <div class="row deliver-options">
                 <h2>What sort of food would you like delivered?</h2>   
                 <div class="col-md-4">
-                    <button id="deliverMex" class="btn circle-btn">Mexican</button>
+                    <button id="deliverMex" class="deliverCat btn circle-btn" data-value="mexican">Mexican</button>
                 </div>
                 <div class="col-md-4">
-                    <button id="deliverBur" class="btn circle-btn">Burgers & Fries</button>
+                    <button id="deliverBur" class="deliverCat btn circle-btn" data-value="burgers">Burgers & Fries</button>
                 </div>
                 <div class="col-md-4">
-                    <button id="deliverPiz" class="btn circle-btn">Pizza</button>            
+                    <button id="deliverPiz" class="deliverCat btn circle-btn" data-value="pizza">Pizza</button>            
                 </div>
                 <div class="col-md-4">
-                    <button id="deliverVeg" class="btn circle-btn">Vegan</button>            
+                    <button id="deliverVeg" class="deliverCat btn circle-btn" data-value="vegan">Vegan</button>            
                 </div>
                 <div class="col-md-4">
-                    <button id="deliverChi" class="btn circle-btn">Chinese</button>            
+                    <button id="deliverChi" class="deliverCat btn circle-btn" data-value="chinese">Chinese</button>            
                 </div>
                 <div class="col-md-4">
-                    <button id="deliverSea" class="btn circle-btn">Search</button>            
+                    <input text placeholder="Something Specific" class="deliverCat" id="delCatInput">
+                    <button class="delCatInputBtn"><i class="fa fa-search" aria-hidden="true"></i>
+                    </button> 
+                </div>            
+                <h4 class="closeModal">x - start over</h4>
+            </div>
+        </div>
+        <div id="" class="recipeOptionsWrap optionsModalRec2">
+            <div id="recipeOptionsAPI" class="recipe-api row">
+                <div class="col-md-4 api-object">
+                    <h3>Recipe Name</h3>
+                    <ul>Ingredients
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
                 </div>
+                <div class="col-md-4 api-object">
+                    <h3>Recipe Name</h3>
+                    <ul>Ingredients
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Recipe Name</h3>
+                    <ul>Ingredients
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Recipe Name</h3>
+                    <ul>Ingredients
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Recipe Name</h3>
+                    <ul>Ingredients
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-md-4 api-object">
+                    <h3>Recipe Name</h3>
+                    <ul>Ingredients
+                        <li>Address</li>
+                        <li><a href="#">Order URL</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                    <p>Directions:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                </div>
+                <h4 class="closeModal4">x - start over</h4>
+            </div>
+            <div class="row recipe-options">
+                <h2>What sort of food would you like to cook?</h2>   
+                <div class="col-md-4">
+                    <button id="recipeChi" class="recipeCat btn circle-btn" data-value="chicken">Chicken</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="recipePas" class="recipeCat btn circle-btn" data-value="pasta">Pasta</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="recipeVeg" class="recipeCat btn circle-btn" data-value="vegan">Vegan</button>            
+                </div>
+                <div class="col-md-4">
+                    <button id="recipeSan" class="recipeCat btn circle-btn" data-value="sandwich">Sandwiches</button>            
+                </div>
+                <div class="col-md-4">
+                    <button id="recipeSna" class="recipeCat btn circle-btn" data-value="snack">Snacks</button>            
+                </div>
+                <div class="col-md-4">
+                    <input text placeholder="Something Specific" class="recipeCat" id="recCatInput">
+                    <button class="recCatInputBtn"><i class="fa fa-search" aria-hidden="true"></i>
+                    </button> 
+                </div>            
+                <h4 class="closeModal3">x - start over</h4>
             </div>
         </div>
     </section>
+    <!-- JQUERY CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- LOCAL JS -->
     <script src="assets/js/tgif.js"></script>
 </body>
 </html>
