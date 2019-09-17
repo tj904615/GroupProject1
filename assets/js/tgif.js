@@ -85,6 +85,40 @@ $("#getRecipe").on("click",function(){
         $(".row.recipe-options").css("display","none");
         $(".recipe-api.row").animate({opacity:1.0});
         recipeVarStore(recipeCategory);
+        var cuisine = $(this).attr("data-value"); 
+        var randomNum = Math.floor(Math.random()*30);
+    var queryURL = "https://api.spoonacular.com/recipes/search?apiKey=adc5dcc46e89413bbe01d5e48609c886&cuisine=" + cuisine + "&offset=" +randomNum;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+        for (i=0;i<6;i++){
+            var newRecipe = $('<div>');
+            newRecipe.addClass("col-md-4 api-object recipes");
+            newRecipe.attr("data-value", response.results[i].id);
+            var recipeNames = $("<h3>");
+            var recipeName = response.results[i].title;
+            recipeNames.append(recipeName);
+            newRecipe.append(recipeNames);
+
+            var imageURL = (response.baseUri + response.results[i].image);
+            var recipeImages = $("<img>").attr("src", imageURL);
+            newRecipe.append(recipeImages);
+
+            $("#recipeOptionsAPI").prepend(newRecipe);
+        }
+        $(".recipes").on("click",function(){
+            var recipeId = $(this).attr('data-value')
+            var queryUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/information?apiKey=adc5dcc46e89413bbe01d5e48609c886";
+            $.ajax({
+                url: queryUrl,
+                method: "GET"
+            }).then(function(answer){
+                console.log(answer);
+            })
+        })
+    })
     });
 // -- IF user enters specific search criteria, that data is stored in the 'deliveryCategory' variable     
     $(".recCatInputBtn").on("click",function(){
@@ -92,6 +126,40 @@ $("#getRecipe").on("click",function(){
         $(".row.recipe-options").css("display","none");
         $(".recipe-api.row").animate({opacity:1.0});
         recipeVarStore(recipeCategory);
+        var cuisine = $("#recCatInput").val().trim().toLowerCase(); 
+        var randomNum = Math.floor(Math.random()*30);
+    var queryURL = "https://api.spoonacular.com/recipes/search?apiKey=adc5dcc46e89413bbe01d5e48609c886&cuisine=" + cuisine + "&offset=" +randomNum;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+        for (i=0;i<6;i++){
+            var newRecipe = $('<div>');
+            newRecipe.addClass("col-md-4 api-object recipes");
+            newRecipe.attr("data-value", response.results[i].id);
+            var recipeNames = $("<h3>");
+            var recipeName = response.results[i].title;
+            recipeNames.append(recipeName);
+            newRecipe.append(recipeNames);
+
+            var imageURL = (response.baseUri + response.results[i].image);
+            var recipeImages = $("<img>").attr("src", imageURL);
+            newRecipe.append(recipeImages);
+
+            $("#recipeOptionsAPI").prepend(newRecipe);
+        }
+        $(".recipes").on("click",function(){
+            var recipeId = $(this).attr('data-value')
+            var queryUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/information?apiKey=adc5dcc46e89413bbe01d5e48609c886";
+            $.ajax({
+                url: queryUrl,
+                method: "GET"
+            }).then(function(answer){
+                console.log(answer);
+            })
+        })
+    })
     });    
 });
 
