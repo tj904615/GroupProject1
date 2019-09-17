@@ -101,10 +101,11 @@ $("#getRecipe").on("click",function(){
             var recipeName = response.results[i].title;
             recipeNames.append(recipeName);
             newRecipe.append(recipeNames);
-
+            var imgWrap = $('<div class="recImg">');
             var imageURL = (response.baseUri + response.results[i].image);
             var recipeImages = $("<img>").attr("src", imageURL);
-            newRecipe.append(recipeImages);
+            imgWrap.append(recipeImages);
+            newRecipe.prepend(imgWrap);
 
             $("#recipeOptionsAPI").prepend(newRecipe);
         }
@@ -143,9 +144,11 @@ $("#getRecipe").on("click",function(){
             recipeNames.append(recipeName);
             newRecipe.append(recipeNames);
 
+            var imgWrap = $('<div class="recImg">');
             var imageURL = (response.baseUri + response.results[i].image);
             var recipeImages = $("<img>").attr("src", imageURL);
-            newRecipe.append(recipeImages);
+            imgWrap.append(recipeImages);
+            newRecipe.prepend(imgWrap);
 
             $("#recipeOptionsAPI").prepend(newRecipe);
         }
