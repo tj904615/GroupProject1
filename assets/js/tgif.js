@@ -59,10 +59,14 @@ $(".zipVarStore").on("click",function(){
 // -- Once user selects a category (via button click), the API displays available results; stores zip and category the in the 'varStore' function as arguments, and hides the Delivery Categories - SLF    
     $(".deliverOptionsWrap").animate({opacity: 1.0});
     $(".deliverCat.btn").on("click",function(){
+
         let deliveryCategory = $(this).attr("data-value");
         $(".row.deliver-options").css("display","none");
         $(".deliver-api.row").animate({opacity:1.0});
         varStore(userZip,deliveryCategory);
+        var Url = "https://www.grubhub.com/search?" + userZip + "&queryText=" + deliveryCategory;
+        var link = $('<a href="' + Url + '"target="_blank"><button id="order" class="deliverCat btn circle-btn">Order</button></a>');
+        $('.order').append(link);
     });
 // -- IF user enters specific search criteria, that data is stored in the 'deliveryCategory' variable     
     $(".delCatInputBtn").on("click",function(){
@@ -70,6 +74,9 @@ $(".zipVarStore").on("click",function(){
         varStore(userZip,deliveryCategory);
         $(".row.deliver-options").css("display","none");
         $(".deliver-api.row").animate({opacity:1.0});
+        var Url = "https://www.grubhub.com/search?" + userZip + "&queryText=" + deliveryCategory;
+        var link = $('<a href="' + Url + '"target="_blank"><button id="order" class="deliverCat btn circle-btn">Order</button></a>');
+        $('.order').append(link);
     });    
 });
 
@@ -101,10 +108,11 @@ $("#getRecipe").on("click",function(){
             var recipeName = response.results[i].title;
             recipeNames.append(recipeName);
             newRecipe.append(recipeNames);
-
+            var imgWrap = $("<div class='recImg'>");
             var imageURL = (response.baseUri + response.results[i].image);
             var recipeImages = $("<img>").attr("src", imageURL);
-            newRecipe.append(recipeImages);
+            imgWrap.append(recipeImages);
+            newRecipe.append(imgWrap);
 
             $("#recipeOptionsAPI").prepend(newRecipe);
         }
@@ -116,6 +124,19 @@ $("#getRecipe").on("click",function(){
                 method: "GET"
             }).then(function(answer){
                 console.log(answer);
+                var title = answer.title;
+                console.log(title);
+                var instructions = answer.instructions;
+                console.log('instructions: ' + instructions);
+                var servings = answer.servings;
+                console.log('servings: ' + servings);
+                var readyTime = answer.readyInMinutes;
+                console.log('ready in: ' + readyTime + ' minutes');
+                var ingredientsArr = answer.extendedIngredients;
+                for (var j=0;j<ingredientsArr.length;j++){
+                    var item = answer.extendedIngredients[j].original;
+                    console.log(item);
+                }
             })
         })
     })
@@ -157,6 +178,19 @@ $("#getRecipe").on("click",function(){
                 method: "GET"
             }).then(function(answer){
                 console.log(answer);
+                var title = answer.title;
+                console.log(title);
+                var instructions = answer.instructions;
+                console.log('instructions: ' + instructions);
+                var servings = answer.servings;
+                console.log('servings: ' + servings);
+                var readyTime = answer.readyInMinutes;
+                console.log('ready in: ' + readyTime + ' minutes');
+                var ingredientsArr = answer.extendedIngredients;
+                for (var j=0;j<ingredientsArr.length;j++){
+                    var item = answer.extendedIngredients[j].original;
+                    console.log(item);
+                }
             })
         })
     })
@@ -193,18 +227,32 @@ $("#listenMusic").on("click",function(){
     $(".musicOptionsWrap").css("display","block"); 
     $(".musicOptionsWrap").animate({opacity: 1.0});
     $(".musicCat.btn").on("click",function(){
+        $('.music').hide();
         let musicCategory = $(this).attr("data-value");
         $(".row.music-options").css("display","none");
         $(".music-api.row").animate({opacity:1.0});
         musicVarStore(musicCategory);
+        if ($(this).attr("data-value") == 'hip'){
+            $('.hip').show();
+        }
+        else if ($(this).attr("data-value") == 'rock'){
+            $('.rock').show();
+        }
+        else if ($(this).attr("data-value") == 'r-b'){
+            $('.r-b').show();
+        }
+        else if ($(this).attr("data-value") == 'pop'){
+            $('.pop').show();
+        }
+        else if ($(this).attr("data-value") == 'country'){
+            $('.country').show();
+        }
+        else if ($(this).attr("data-value") == 'dance'){
+            $('.dance').show();
+        }
     });
 // -- IF user enters specific search criteria, that data is stored in the 'musicCategory' variable     
-    $(".musCatInputBtn").on("click",function(){
-        let musicCategory = $("#musCatInput").val().trim().toLowerCase(); 
-        $(".row.music-options").css("display","none");
-        $(".music-api.row").animate({opacity:1.0});
-        musicVarStore(musicCategory);
-    });    
+   
 });
 
 /* =====================================================
@@ -219,14 +267,47 @@ $("#readBook").on("click",function(){
         $(".row.book-options").css("display","none");
         $(".book-api.row").animate({opacity:1.0});
         bookVarStore(bookCategory);
+        var book = $(this).attr("data-value");
+        var randomNum = Math.floor(Math.random()*40);
+        var queryURL = "https://librivox.org/api/feed/audiobooks/?genre=" + book + "&format=jsonp&offset=" + randomNum;
+        $.ajax({
+            url: queryURL,
+            type: 'GET',
+            dataType: 'jsonp',
+            cors: true ,
+            contentType:'application/json',
+            secure: true,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+            },
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader ("Authorization", "Basic " + btoa(""));
+            },
+            success: function (response){
+              console.log(response);
+              for (var i=0;i<3;i++){
+                var newBooks = $('<div>');
+                newBooks.addClass("col-md-4 api-object books");
+                var bookNames = $('<h3>');
+                var bookTitle = response.books[i].title;
+                bookNames.append(bookTitle);
+                newBooks.append(bookNames);
+                var bookDescription = $('<p>')
+                var bookAbout = response.books[i].description;
+                bookDescription.append(bookAbout);
+                newBooks.append(bookDescription);
+                var buttonLink = response.books[i].url_librivox;
+                var buttonDiv = $('<div>');
+                var bookButton = $('<a href="' + buttonLink + '"target="_blank"><button class="btn circle-btn buttonlink">Read Me</button></a>');
+                buttonDiv.append(bookButton);
+                newBooks.append(buttonDiv);
+                $("#bookOptionsAPI").prepend(newBooks);
+            }
+            }
+        })
     });
 // -- IF user enters specific search criteria, that data is stored in the 'bookCategory' variable     
-    $(".booCatInputBtn").on("click",function(){
-        let bookCategory = $("#booCatInput").val().trim().toLowerCase(); 
-        $(".row.book-options").css("display","none");
-        $(".book-api.row").animate({opacity:1.0});
-        bookVarStore(bookCategory);
-    });    
+ 
 });
 
 // -- Close various modals with "x" span. These two are for DELIVERY - SLF
