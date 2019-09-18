@@ -206,10 +206,26 @@ $("#getRecipe").on("click",function(){
                 var readyTime = answer.readyInMinutes;
                 console.log('ready in: ' + readyTime + ' minutes');
                 var ingredientsArr = answer.extendedIngredients;
+                $(".singleRecipe").css("display","flex");
+                $(".recipes").css("display","none");
+                $(".singleRecipe").append("<h3 class=\"recipeTitle\">");
+                    $(".recipeTitle").text(title);
+                $(".singleRecipe").append("<div class='singleImgWrap'>");
+                    $(".singleImgWrap").append("<img class=\"recipeThumb\">");
+                        $(".recipeThumb").attr("src",imageURL);
+                $(".singleRecipe").append("<ul>");
+                    $(".singleRecipe ul").append("<b>Ingredients: </b><br>")
                 for (var j=0;j<ingredientsArr.length;j++){
                     var item = answer.extendedIngredients[j].original;
-                    console.log(item);
+                    $(".singleRecipe ul").append("<li class='recipeLi"+j+"'>");
+                    $(".recipeLi"+j+"").append(item); 
                 }
+                $(".singleRecipe").append("<p class='recipeInstructions'>");
+                    $(".recipeInstructions").append("<b>Instructions:</b> "+instructions);
+                $(".singleRecipe").append("<p class='recipeServings'>");
+                    $(".recipeServings").append("<b>Serves: </b> "+servings);
+                $(".singleRecipe").append("<p class='recipeReady'>");
+                    $(".recipeReady").append("<b>Ready in:</b> "+readyTime);
             })
         })
     })
