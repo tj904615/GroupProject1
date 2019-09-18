@@ -1,0 +1,9 @@
+console.log("ITEM LIST ============== > "+item)
+                    var ingredientsUl = $(".singleRecipe").append("<ul>");
+                    var ingredientsIl = ingredientsUl.append('<li>');
+                    ingredientsIl.text(item);       
+
+
+
+                    bcb15887544740359f1fe80f670949a7 -- slf
+                    adc5dcc46e89413bbe01d5e48609c886 -- marcus

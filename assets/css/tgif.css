@@ -2,7 +2,7 @@
 body{
     margin: 0px;
     padding: 0px;
-    font-size: 18px;
+    font-size: 14px;
     font-family: 'Roboto','Helvetica Neue',helvetica,arial,sans-serif;
     font-weight: 300;
     background: #000;
@@ -87,6 +87,7 @@ h1,h2,h4,h5,h6{
     height: 70px;
     font-style: italic;
     text-shadow: 2px 2px 0px #507614;
+    cursor: pointer;
 }
 .row.selection-container h2.inactive{
     background: #689520;
@@ -125,6 +126,12 @@ h1,h2,h4,h5,h6{
     transform: scale(1.0);
     transition: all .25s ease .125s;
     }
+    .deliverCat.btn.circle-btn{
+        color: #000;
+    }
+    .deliverCat.btn.circle-btn:hover{
+        color: #FFF;
+    }
     .btn:hover{
         background: #000;
         color: #FFF;
@@ -144,10 +151,47 @@ h1,h2,h4,h5,h6{
   border-radius: 10px;
   object-fit:cover;
 }
-.api-object{height: 350px;}
 .recImg{margin:-20px -20px 20px -20px;}
 .recImg img{position:relative; top: 0;left:0;border-radius: 20px 20px 0px 0px}
+
+
+.bookDescription strong{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 20px;
+}
 /* ======================= END RECIPE STYLES ======================= */
+
+#enterZip{
+  flex-direction: row;
+  flex-wrap:wrap;
+  padding: 5px;
+  border: none;
+}
+#locationInput.location{
+  text-align: right;
+  margin: 0px auto;
+}
+
+input#zipSearch{
+  flex-basis: 20%;
+  margin: 0px auto 7px auto;
+  border-radius: 5px;
+  max-width: 100px;
+  border: 1px solid #999;
+  padding: 0px 5px;
+  color: #999;
+}
+.zipVarStore.btn{
+  padding: 0px 5px;
+  background: #000;
+  color:#FFF;
+  margin-bottom: 0px;
+  border: none;
+}
+.zipVarStore.btn:hover{
+  background: #a43a6e;
+}
 
 
 
@@ -158,40 +202,10 @@ h1,h2,h4,h5,h6{
     background: #FFF;
     font-family: 'Oswald','Bebas Neue','Impact',condensed,sans-serif;
     font-size: 1.75rem;
-    padding: 25px;
     border-radius: 200px;
-    border: 5px solid #000;
-}
-#zipSearch{
-    border: 1px solid #999;
-    border-radius: 200px 0px 0px 200px;
-    width: 100px;
-    padding: 0px 10px;
-}
-.zipVarStore.btn{
-    padding: 5px 0px;
-    width: 175px;
-    background: #000;
     border: none;
-    color:#FFF;
-    float:left;
-    border-radius: 0px 200px 200px 0px;
-    margin-bottom: 0px;
-    position: relative;
-    top: 0px;
-    left: 395px;
-    display: none;
 }
-#locationInput{
-    padding-right: 20px;
-    margin-bottom: 0px;
-    position: relative;
-    left: -100px;
-}
-#zipSearch{
-    position: relative;
-    left: -100px;
-}
+
 #deliverIt label, #deliverIt input{
     float:left;
 }
@@ -230,6 +244,82 @@ color: #FFF;
 .closeModal:hover, .closeModal2:hover, .closeModal3:hover, .closeModal4:hover, .closeModal5:hover, .closeModal6:hover, .closeModal7:hover, .closeModal8:hover, .closeModal9:hover{
     color:#000;
 }
+.recipes {
+    cursor: pointer;
+}
+.singleRecipe{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    display: none;
+}
+.singleRecipe h3{
+  width: 100%;
+  margin-top: -20px;
+  border-bottom: 3px dotted #ccc;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+}
+.singleImgWrap{
+    flex-basis: 30%;
+}
+.singleImgWrap img{
+  height: 400px;
+  flex-basis: 33%;
+  object-fit: cover;
+  order: 1;
+  border-radius: 20px;
+}
+.singleRecipe .recipeInstructions{
+  order: 2;
+  flex-basis: 33%;
+  font-size: 14px;
+  padding: 0px 20px 20px;
+  box-sizing: border-box;
+}
+.singleRecipe .recipeInstructions b{
+  width: 100%;
+  font-weight: 700;
+  font-size: 20px;
+  color: green;
+  text-transform: uppercase;
+}
+.singleRecipe ul{
+    order: 3;
+    font-style: italic;
+    background: #eaeaea;
+    width: 33%;
+    padding: 30px 20px 20px 40px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 24px;
+    }
+    .singleRecipe ul b{
+        font-style: normal;
+        text-transform: uppercase;
+        font-family: 'Oswald','Impact','Bebas Neue',condensed, sans-serif;
+        color: #666;
+        font-size: 24px;
+        margin-left: -12px;
+    }
+.singleRecipe .recipeServings, .singleRecipe .recipeReady{
+    order: 5;
+    background: #A43A6E;
+    border-radius: 40px;
+    padding: 7px 20px;
+    color: #FFF;
+    margin: .5%;
+    flex-basis: 49%;
+    text-align: center;
+    font-family: 'Oswald','Bebas Neue','Impact',condensed, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+}
+.singleRecipe .recipeReady{
+  order: 4;
+}
 .deliver-api.row, .recipe-api.row, .movie-api.row, .music-api.row, .book-api.row{
     background: #FFF;
     max-width: 1200px;
@@ -241,8 +331,26 @@ color: #FFF;
     top: 10vh;
     opacity: 0.0;
     padding: 40px;
+    height: max-content;
 }
-.deliver-api.row .api-object, .recipe-api.row .api-object{
+.deliver-api.row .api-object h3{
+    font-family: 'Oswald','Bebas Neue',condensed,sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    color: #e21e2d;
+    font-size: 48px; margin-bottom: 30px;
+}
+.deliveryCatSpan, .userZipSpan{
+  font-size: 40px;
+  color: #e21e2d;
+  font-weight: 900;
+  position: relative;
+  top: 5px;
+}
+
+/* =========================== RECIPE STYLES -- SLF ------ */
+.recipe-api.row .api-object{
     border: 1px solid #666;
     padding: 20px;
     border-radius: 20px;
@@ -251,7 +359,7 @@ color: #FFF;
     margin: 3px;
     flex-basis: calc(33% - 6px);
 }
-.deliver-api.row .api-object h3, .recipe-api.row .api-object h3{
+.recipe-api.row .api-object h3{
     text-align: left;
     font-family: 'Oswald','Bebas Neue',condensed,sans-serif;
     font-weight: 700;
@@ -271,9 +379,16 @@ color: #FFF;
     display: none;
 }
 
+/* -------------------- MUSIC PATH ------------------ */
+.musicOptionsWrap.musicModalRec4 iframe{
+    border-radius: 10px;
+    margin: 0px auto;
+}
+
 /* ===================================
 -------------------- MEDIA QUERIES ---
 ==================================== */
+
 @media screen and (max-width: 780px){
     .row.logo-container h1{
         font-size: 6rem;
