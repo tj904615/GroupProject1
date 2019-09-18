@@ -44,7 +44,7 @@ $(".dinner-select").on("click",function(){
 // -- On Choosing "DELIVER IT" on main page; Enter Zip field appears in place of the button.
 $("#deliverIt").on("click", function(){
     $(".hideOnClick").css("display","none");
-    $("#enterZip").css("display","block");
+    $("#enterZip").css("display","flex");
     $("#enterZip").animate({opacity: 1.0});
     $(".zipVarStore").css("display","block");
 });
@@ -65,7 +65,7 @@ $(".zipVarStore").on("click",function(){
         $(".deliver-api.row").animate({opacity:1.0});
         varStore(userZip,deliveryCategory);
         var Url = "https://www.grubhub.com/search?" + userZip + "&queryText=" + deliveryCategory;
-        var link = $('<a href="' + Url + '"target="_blank"><button id="order" class="deliverCat btn circle-btn">Order</button></a>');
+        var link = $('<a href="' + Url + '"target="_blank"><button id="order" class="deliverCat btn circle-btn">'+"Find <span class='deliveryCatSpan'>"+deliveryCategory+" food</span> near <span class='userZipSpan'> "+userZip+" </span> "+'</button></a>');
         $('.order').append(link);
     });
 // -- IF user enters specific search criteria, that data is stored in the 'deliveryCategory' variable     
@@ -94,7 +94,7 @@ $("#getRecipe").on("click",function(){
         recipeVarStore(recipeCategory);
         var cuisine = $(this).attr("data-value"); 
         var randomNum = Math.floor(Math.random()*30);
-    var queryURL = "https://api.spoonacular.com/recipes/search?apiKey=adc5dcc46e89413bbe01d5e48609c886&cuisine=" + cuisine + "&offset=" +randomNum;
+    var queryURL = "https://api.spoonacular.com/recipes/search?apiKey=bcb15887544740359f1fe80f670949a7&cuisine=" + cuisine + "&offset=" +randomNum;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -119,7 +119,7 @@ $("#getRecipe").on("click",function(){
         }
         $(".recipes").on("click",function(){
             var recipeId = $(this).attr('data-value')
-            var queryUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/information?apiKey=adc5dcc46e89413bbe01d5e48609c886";
+            var queryUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/information?apiKey=bcb15887544740359f1fe80f670949a7";
             $.ajax({
                 url: queryUrl,
                 method: "GET"
@@ -134,11 +134,27 @@ $("#getRecipe").on("click",function(){
                 var readyTime = answer.readyInMinutes;
                 console.log('ready in: ' + readyTime + ' minutes');
                 var ingredientsArr = answer.extendedIngredients;
+                $(".singleRecipe").css("display","flex");
+                $(".recipes").css("display","none");
+                $(".singleRecipe").append("<h3 class=\"recipeTitle\">");
+                    $(".recipeTitle").text(title);
+                $(".singleRecipe").append("<div class='singleImgWrap'>");
+                    $(".singleImgWrap").append("<img class=\"recipeThumb\">");
+                        $(".recipeThumb").attr("src",imageURL);
+                $(".singleRecipe").append("<ul>");
+                    $(".singleRecipe ul").append("<b>Ingredients: </b><br>")
                 for (var j=0;j<ingredientsArr.length;j++){
                     var item = answer.extendedIngredients[j].original;
-                    console.log(item);
+                    $(".singleRecipe ul").append("<li class='recipeLi"+j+"'>");
+                    $(".recipeLi"+j+"").append(item); 
                 }
-            })
+                $(".singleRecipe").append("<p class='recipeInstructions'>");
+                    $(".recipeInstructions").append("<b>Instructions:</b> "+instructions);
+                $(".singleRecipe").append("<p class='recipeServings'>");
+                    $(".recipeServings").append("<b>Serves: </b> "+servings);
+                $(".singleRecipe").append("<p class='recipeReady'>");
+                    $(".recipeReady").append("<b>Ready in:</b> "+readyTime);
+            });
         })
     })
     });
@@ -150,7 +166,7 @@ $("#getRecipe").on("click",function(){
         recipeVarStore(recipeCategory);
         var cuisine = $("#recCatInput").val().trim().toLowerCase(); 
         var randomNum = Math.floor(Math.random()*30);
-    var queryURL = "https://api.spoonacular.com/recipes/search?apiKey=adc5dcc46e89413bbe01d5e48609c886&cuisine=" + cuisine + "&offset=" +randomNum;
+    var queryURL = "https://api.spoonacular.com/recipes/search?apiKey=bcb15887544740359f1fe80f670949a7&cuisine=" + cuisine + "&offset=" +randomNum;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -197,7 +213,9 @@ $("#getRecipe").on("click",function(){
             })
         })
     })
-    });    
+
+// DISPLAY INDIVIDUAL RECIPE WHEN API-OBJECT IS CLICKED - SLF
+    });  
 });
 
 /* =====================================================
@@ -291,11 +309,11 @@ $("#readBook").on("click",function(){
               for (var i=0;i<3;i++){
                 var newBooks = $('<div>');
                 newBooks.addClass("col-md-4 api-object books");
-                var bookNames = $('<h3>');
+                var bookNames = $('<h3 class="bookTitle">');
                 var bookTitle = response.books[i].title;
                 bookNames.append(bookTitle);
                 newBooks.append(bookNames);
-                var bookDescription = $('<p>')
+                var bookDescription = $('<p class="bookDescription">')
                 var bookAbout = response.books[i].description;
                 bookDescription.append(bookAbout);
                 newBooks.append(bookDescription);
