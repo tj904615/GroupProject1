@@ -94,7 +94,7 @@ $("#getRecipe").on("click",function(){
         recipeVarStore(recipeCategory);
         var cuisine = $(this).attr("data-value"); 
         var randomNum = Math.floor(Math.random()*30);
-    var queryURL = "https://api.spoonacular.com/recipes/search?apiKey=bcb15887544740359f1fe80f670949a7&cuisine=" + cuisine + "&offset=" +randomNum;
+    var queryURL = "https://api.spoonacular.com/recipes/search?apiKey=adc5dcc46e89413bbe01d5e48609c886gi&cuisine=" + cuisine + "&offset=" +randomNum;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -119,7 +119,7 @@ $("#getRecipe").on("click",function(){
         }
         $(".recipes").on("click",function(){
             var recipeId = $(this).attr('data-value')
-            var queryUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/information?apiKey=bcb15887544740359f1fe80f670949a7";
+            var queryUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/information?apiKey=adc5dcc46e89413bbe01d5e48609c886";
             $.ajax({
                 url: queryUrl,
                 method: "GET"
